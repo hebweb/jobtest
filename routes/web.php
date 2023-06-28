@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// also an option: move it to the auth.php file
+
 Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth']);

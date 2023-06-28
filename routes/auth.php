@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\CountriesController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -53,4 +54,18 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+
+    // Countries CRUD
+
+    Route::post('countries/store',[CountriesController::class, 'store'])->name('countries.store');
+    
+    Route::get('countries/edit/{country}',[CountriesController::class, 'edit'])->name('countries.edit');
+    
+    Route::patch('countries/update/{country}',[CountriesController::class, 'update'])->name('countries.update');
+    
+    Route::delete('countries/delete/{country}',[CountriesController::class, 'destroy'])->name('countries.destroy');
+    
+    Route::get('countries/{country}',[CountriesController::class, 'show'])->name('countries.show');
+    
+    Route::get('countries',[CountriesController::class, 'index'])->name('countries.index');
 });
