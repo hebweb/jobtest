@@ -20,8 +20,6 @@ class IsraelOnly
     {
         $ip = $request->ip();
         $response = Http::get("https://api.ip2location.io/?key=" . env("GEO_LOCATION_KEY") . "&ip=$ip");
-
-        dd($response);
         
         $israelCode = 'IL';
         
